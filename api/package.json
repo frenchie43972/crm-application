@@ -1,0 +1,16 @@
+{
+  "name": "crm-api",
+  "version": "1.0.0",
+  "description": "Lightweight CRM API",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^5.1.7"
+  }
+}
