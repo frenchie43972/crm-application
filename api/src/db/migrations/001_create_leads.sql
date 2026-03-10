@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS leads (
   phone TEXT NOT NULL,
   company TEXT,
   status TEXT DEFAULT 'New',
-  source TEXT,
   created_on DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_on DATETIME DEFAULT CURRENT_TIMESTAMP
 );
