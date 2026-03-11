@@ -1,19 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 
+import router from './routes/leads.routes.js';
+
 const app = express();
+const leadsRouter = router;
 
 // Middleware
 app.use(cors());
-app.use(express());
+app.use(express.json());
 
-/**
- *
- * Health Check
- * It is a simple endpoint used to verify that the service is running and able to respond to requests.
- */
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
-
+// Mounted routes
+app.use('/leads', leadsRouter);
 export default app;

@@ -72,7 +72,7 @@ export function getAllLeads(limit, offset, search) {
         updated_on
         FROM leads
       ${whereClause}
-      ORDER BY created_date DESC
+      ORDER BY created_on DESC
       LIMIT ? OFFSET ?
     `;
 
