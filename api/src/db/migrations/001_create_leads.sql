@@ -5,7 +5,15 @@ CREATE TABLE IF NOT EXISTS leads (
   email TEXT NOT NULL,
   phone TEXT NOT NULL,
   company TEXT,
-  status TEXT DEFAULT 'New',
+  status TEXT DEFAULT 'New' CHECK(status IN (
+    'New',
+    'Contacted',
+    'Qualified',
+    'Proposal',
+    'Negotiation',
+    'Won',
+    'Lost'
+  )),
   created_on DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_on DATETIME DEFAULT CURRENT_TIMESTAMP
 );
