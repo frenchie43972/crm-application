@@ -1,4 +1,4 @@
-import db from '../database.js';
+import db from "../database.js";
 
 /**
  * Fetches a list of leads with optional search, filtering, pagination, and sorting.
@@ -50,7 +50,7 @@ export function getAllLeads(limit, offset, search) {
      *   (empty string → no WHERE clause)
      */
     const whereClause =
-      conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+      conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
     /**
      * Main query used to fetch paginated rows.
@@ -153,7 +153,7 @@ export function getLeadById(id) {
     db.get(sql, [id], (err, row) => {
       if (err) return reject(err);
 
-      relsove(row);
+      resolve(row);
     });
   });
 }
@@ -179,7 +179,7 @@ export function createLead({
         email,
         phone,
         company,
-        status,)
+        status)
       VALUES (?, ?, ?, ?, ?, ?)
   `;
 
@@ -238,12 +238,12 @@ export function updateLeadById(
     const sql = `
       UPDATE leads
       SET
-        first_name,
-        last_name,
-        email,
-        phone,
-        company,
-        status,
+        first_name = ?,
+        last_name = ?,
+        email = ?,
+        phone = ?,
+        company = ?,
+        status = ?,
         updated_on = CURRENT_TIMESTAMP
       WHERE id = ?
     `;
