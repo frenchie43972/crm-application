@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import path, { resolve } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 import db from "./database.js";
 
