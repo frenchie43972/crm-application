@@ -1,4 +1,3 @@
-import db from "../db/database.js";
 import { getNotesByLeadId, createNote } from "../db/queries/notes.queries.js";
 
 import { parseLeadId } from "../utils/parseId.js";

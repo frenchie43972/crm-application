@@ -1,5 +1,4 @@
 import { isValidPhoneNumber } from "libphonenumber-js";
-import db from "../db/database.js";
 import {
   getAllLeads,
   getLeadById,
@@ -22,7 +21,7 @@ import { parseSearch } from "../utils/parseSearch.js";
  *
  * Using a constant also keeps validation logic centralized and reusable.
  */
-const ALLOWED_STATUS_VALUES = [
+const ALLOWED_STATUS_VALUES = new Set([
   "New",
   "Contacted",
   "Qualified",
@@ -30,7 +29,7 @@ const ALLOWED_STATUS_VALUES = [
   "Negotiation",
   "Won",
   "Lost",
-];
+]);
 
 /**
  * GET /leads
@@ -134,7 +133,7 @@ export async function create(req, res, next) {
       return res.status(400).json({ err: "Invalid email address" });
     }
 
-    if (typeof status !== "string" || !ALLOWED_STATUS_VALUES.includes(status)) {
+    if (typeof status !== "string" || !ALLOWED_STATUS_VALUES.has(status)) {
       return res.status(400).json({ err: "Invalid lead status" });
     }
 
@@ -151,10 +150,10 @@ export async function create(req, res, next) {
      * - Trim whitespace from inputs
      */
     const payload = {
-      first_name: first_name.trim(),
-      last_name: last_name.trim(),
-      email: email.trim(),
-      phone: phone.trim(),
+      first_name: first_name !== undefined ? first_name.trim() : undefined,
+      last_name: last_name !== undefined ? last_name.trim() : undefined,
+      email: email !== undefined ? email.trim() : undefined,
+      phone: phone !== undefined ? phone.trim() : undefined,
       company: typeof company === "string" ? company.trim() : "",
       status,
     };
@@ -228,7 +227,7 @@ export async function updateById(req, res, next) {
       return res.status(400).json({ err: "Invalid email address" });
     }
 
-    if (status !== undefined && !ALLOWED_STATUS_VALUES.includes(status)) {
+    if (status !== undefined && !ALLOWED_STATUS_VALUES.has(status)) {
       return res.status(400).json({ err: "Invalid lead status" });
     }
 
@@ -239,10 +238,10 @@ export async function updateById(req, res, next) {
     }
 
     const payload = {
-      first_name: first_name.trim(),
-      last_name: last_name.trim(),
-      email: email.trim(),
-      phone: phone.trim(),
+      first_name: first_name !== undefined ? first_name.trim() : undefined,
+      last_name: last_name !== undefined ? last_name.trim() : undefined,
+      email: email !== undefined ? email.trim() : undefined,
+      phone: phone !== undefined ? phone.trim() : undefined,
       company: typeof company === "string" ? company.trim() : "",
       status,
     };
