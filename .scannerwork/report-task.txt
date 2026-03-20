@@ -2,5 +2,5 @@ projectKey=crm-app
 serverUrl=http://localhost:9000
 serverVersion=26.3.0.120487
 dashboardUrl=http://localhost:9000/dashboard?id=crm-app
-ceTaskId=bd6d0dd0-b901-4919-bbe3-ce0cf004138c
-ceTaskUrl=http://localhost:9000/api/ce/task?id=bd6d0dd0-b901-4919-bbe3-ce0cf004138c
+ceTaskId=0a120cce-3784-4b0d-9378-57716e24363c
+ceTaskUrl=http://localhost:9000/api/ce/task?id=0a120cce-3784-4b0d-9378-57716e24363c

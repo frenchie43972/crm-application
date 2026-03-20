@@ -150,10 +150,10 @@ export async function create(req, res, next) {
      * - Trim whitespace from inputs
      */
     const payload = {
-      first_name: first_name !== undefined ? first_name.trim() : undefined,
-      last_name: last_name !== undefined ? last_name.trim() : undefined,
-      email: email !== undefined ? email.trim() : undefined,
-      phone: phone !== undefined ? phone.trim() : undefined,
+      first_name: first_name.trim(),
+      last_name: last_name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
       company: typeof company === "string" ? company.trim() : "",
       status,
     };
@@ -238,10 +238,10 @@ export async function updateById(req, res, next) {
     }
 
     const payload = {
-      first_name: first_name !== undefined ? first_name.trim() : undefined,
-      last_name: last_name !== undefined ? last_name.trim() : undefined,
-      email: email !== undefined ? email.trim() : undefined,
-      phone: phone !== undefined ? phone.trim() : undefined,
+      first_name: first_name.trim(),
+      last_name: last_name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
       company: typeof company === "string" ? company.trim() : "",
       status,
     };
