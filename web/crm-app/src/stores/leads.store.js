@@ -37,6 +37,9 @@ export const useLeadsStore = defineStore('leads', {
       - knowledge of the API response shape
     */
     async fetchLeads() {
+      this.loading = true
+      this.error = null
+
       try {
         /**
          * URLSearchParams helps construct query strings safely.
