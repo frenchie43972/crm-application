@@ -26,6 +26,8 @@ export const useLeadsStore = defineStore('leads', {
     limit: 20,
     offset: 0,
     total: 0,
+
+    currentLead: null,
   }),
 
   actions: {
@@ -85,6 +87,31 @@ export const useLeadsStore = defineStore('leads', {
         throw err
       } finally {
         // Always reset loading state whether success or failure
+        this.loading = false
+      }
+    },
+
+    /**
+     *
+     * Fetches a single lead by id
+     */
+    async fetchLeadById(id) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/leads/${id}`)
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch lead')
+        }
+
+        const result = await res.json()
+
+        this.currentLead = result.data
+      } catch (err) {
+        this.error = err.message
+      } finally {
         this.loading = false
       }
     },

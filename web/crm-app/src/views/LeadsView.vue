@@ -1,7 +1,10 @@
-<script setup></script>
+<script setup>
+import LeadList from '@/components/leads/LeadList.vue'
+</script>
 
 <template>
-  <h1>Lead View</h1>
+  <h2>Lead View</h2>
+  <LeadList />
 </template>
 
 <style scoped></style>

@@ -1,7 +1,17 @@
-<script setup></script>
+<script setup>
+const { note } = defineProps({
+  note: {
+    type: Object,
+    required: true,
+  },
+})
+</script>
 
 <template>
-  <h1>Note Item</h1>
+  <li>
+    <p>{{ note.created_on }}</p>
+    <p>{{ note.content }}</p>
+  </li>
 </template>
 
 <style scoped></style>
